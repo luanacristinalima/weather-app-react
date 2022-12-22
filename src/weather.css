@@ -1,3 +1,68 @@
 .Weather {
-  background-color: aquamarine;
+  color: #443057;
+  margin: 50px 0 20px;
+}
+
+.Weather .current-city-weather {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.Weather h1 {
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.Weather img {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+}
+
+.Weather ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.Weather ul li {
+  font-size: 20px;
+  line-height: 1.5;
+  opacity: 0.8;
+}
+
+.Weather .day-data {
+  text-align: center;
+}
+
+.Weather .week-day {
+  font-size: 36px;
+  font-weight: 500;
+  opacity: 1;
+}
+
+.Weather h2 {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+.Weather h3 {
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.Weather .current-weather {
+  margin-top: 100px;
+}
+
+.Weather .units {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.5;
+  position: relative;
+  bottom: 20px;
 }
