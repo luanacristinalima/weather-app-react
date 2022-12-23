@@ -1,70 +1,108 @@
+import { useState } from "react";
+import axios from "axios";
 import "./weather.css";
 
 export default function Weather() {
-  return (
-    <div className="Weather">
-      <div className="row">
-        <div className="col-md-8 current-city-weather">
-          <form>
+  const [city, setCity] = useState("Lisbon");
+  const [weatherData, setWeatherData] = useState({ ready: false });
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function showWeather(response) {
+    setWeatherData({
+      ready: true,
+      date: "Dec 23",
+      time: "14:21 pm",
+      weekDay: "THU",
+      city: response.data.city,
+      temperature: response.data.temperature.current,
+      description: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
+      wind: response.data.wind.speed,
+      icon: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
+    });
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
+  function search() {
+    const apiKey = "t62d70oe1100008354b8807464af7fad";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(showWeather);
+  }
+
+  if (weatherData.ready) {
+    return (
+      <div className="Weather">
+        <div className="row">
+          <div className="col-md-8 current-city-weather">
+            <form onSubmit={handleSubmit}>
+              <div className="row">
+                <div className="col-10">
+                  <input
+                    type="search"
+                    placeholder="Enter a city..."
+                    className="form-control"
+                    onChange={updateCity}
+                  />
+                </div>
+                <div className="col-2">
+                  <input
+                    type="submit"
+                    value="Search"
+                    className="btn btn-primary w-100"
+                  />
+                </div>
+              </div>
+            </form>
+
+            <div className="row mt-5 ">
+              <div className="col-6">
+                <h1>{weatherData.city}</h1>
+              </div>
+            </div>
+
             <div className="row">
-              <div className="col-10">
-                <input
-                  type="search"
-                  placeholder="Enter a city..."
-                  className="form-control"
-                />
+              <div className="col-md-6 mb-5 mt-5">
+                <img src={weatherData.icon} alt={weatherData.description} />
               </div>
-              <div className="col-2">
-                <input
-                  type="submit"
-                  value="Search"
-                  className="btn btn-primary w-100"
-                />
+              <div className="col-md-6 current-weather">
+                <h2>
+                  {Math.round(weatherData.temperature)}
+                  <span className="units"> ºC|F</span>
+                </h2>
+                <h3 className="text-capitalize">{weatherData.description}</h3>
               </div>
             </div>
-          </form>
 
-          <div className="row mt-5 ">
-            <div className="col-6">
-              <h1>Lisbon</h1>
+            <div className="row">
+              <div className="col-md-6 day-data">
+                <ul>
+                  <li>{weatherData.time}</li>
+                  <li className="week-day mt-3 mb-3">{weatherData.weekDay}</li>
+                  <li>{weatherData.date}</li>
+                </ul>
+              </div>
+              <div className="col-md-6 mt-4">
+                <ul>
+                  <li>Humidity: {weatherData.humidity}%</li>
+                  <li>Wind: {weatherData.wind}km/h</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-md-6 mb-5 mt-5">
-              <img
-                src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
-                alt="Partly cloudy"
-              />
-            </div>
-            <div className="col-md-6 current-weather">
-              <h2>
-                18
-                <span className="units"> ºC|F</span>
-              </h2>
-              <h3>Partly cloudy</h3>
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-6 day-data">
-              <ul>
-                <li>14:21 pm</li>
-                <li className="week-day mt-3 mb-3">THU</li>
-                <li>Dec 22</li>
-              </ul>
-            </div>
-            <div className="col-md-6 mt-4">
-              <ul>
-                <li>Humidity: 89%</li>
-                <li>Wind: 14 km/h</li>
-              </ul>
-            </div>
-          </div>
+          <div className="col-md-4"> Forecast </div>
         </div>
-
-        <div className="col-md-4"> Forecast </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    search();
+    return "Loading...";
+  }
 }

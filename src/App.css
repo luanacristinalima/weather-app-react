@@ -1,5 +1,9 @@
-.App {
+body {
   background: linear-gradient(-225deg, #cbbacc 0%, #2580b3 100%);
+  background-repeat: no-repeat;
+}
+
+.App {
   font-family: "Josefin Sans", sans-serif;
 }
 
