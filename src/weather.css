@@ -33,14 +33,14 @@
   opacity: 0.8;
 }
 
-.Weather .day-data {
-  text-align: center;
-}
-
 .Weather .week-day {
   font-size: 36px;
   font-weight: 500;
   opacity: 1;
+}
+
+.Weather .day-data {
+  text-align: center;
 }
 
 .Weather h2 {

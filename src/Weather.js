@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import "./weather.css";
+import WeatherDate from "./WeatherDate";
 
 export default function Weather() {
   const [city, setCity] = useState("Lisbon");
@@ -12,11 +13,10 @@ export default function Weather() {
   }
 
   function showWeather(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
-      date: "Dec 23",
-      time: "14:21 pm",
-      weekDay: "THU",
+      date: new Date(response.data.time * 1000),
       city: response.data.city,
       temperature: response.data.temperature.current,
       description: response.data.condition.description,
@@ -81,12 +81,8 @@ export default function Weather() {
             </div>
 
             <div className="row">
-              <div className="col-md-6 day-data">
-                <ul>
-                  <li>{weatherData.time}</li>
-                  <li className="week-day mt-3 mb-3">{weatherData.weekDay}</li>
-                  <li>{weatherData.date}</li>
-                </ul>
+              <div className="col-md-6">
+                <WeatherDate date={weatherData.date} />
               </div>
               <div className="col-md-6 mt-4">
                 <ul>
