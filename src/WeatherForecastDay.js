@@ -29,7 +29,9 @@ export default function WeatherForecastDay(props) {
         <WeatherIcon code={props.data.condition.icon} />
       </div>
       <ul className="col-4">
-        <li className="mb-3">{description()}</li>
+        <li className="mb-3" title={description()}>
+          {description()}
+        </li>
         <li>
           {maxTemperature()}
           <span className="min-temp">{minTemperature()}</span>
