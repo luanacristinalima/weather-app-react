@@ -1,6 +1,6 @@
 .Weather {
   color: #443057;
-  margin: 50px 0 20px;
+  margin: 80px 0 20px;
 }
 
 .Weather .current-city-weather {
@@ -60,9 +60,17 @@
 }
 
 .Weather .units {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.5;
   position: relative;
-  bottom: 20px;
+  bottom: 25px;
+}
+.Weather .units a {
+  color: #443057;
+  opacity: 0.6;
+  text-decoration: none;
+}
+.Weather .units a .active {
+  color: #443057;
 }
