@@ -24,7 +24,7 @@ export default function WeatherIcon(props) {
   };
   return (
     <div>
-      <i class={`wi ${codeMapping[props.code]}`}></i>
+      <i className={`wi ${codeMapping[props.code]}`}></i>
     </div>
   );
 }
