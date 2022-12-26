@@ -63,8 +63,7 @@ export default function Weather() {
             <WeatherInfo data={weatherData} />
           </div>
           <div className="col-md-4">
-            {" "}
-            <Forecast />{" "}
+            <Forecast city={weatherData.city} />
           </div>
         </div>
       </div>
