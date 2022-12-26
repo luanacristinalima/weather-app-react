@@ -7,6 +7,7 @@ import Forecast from "./Forecast";
 export default function Weather() {
   const [city, setCity] = useState("Lisbon");
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [unit, setUnit] = useState("celsius");
 
   function showWeather(response) {
     setWeatherData({
@@ -36,6 +37,10 @@ export default function Weather() {
     axios.get(apiUrl).then(showWeather);
   }
 
+  function handleUnitChange(unit) {
+    setUnit(unit);
+  }
+
   if (weatherData.ready) {
     return (
       <div className="Weather">
@@ -60,10 +65,13 @@ export default function Weather() {
                 </div>
               </div>
             </form>
-            <WeatherInfo data={weatherData} />
+            <WeatherInfo
+              data={weatherData}
+              handleUnitChange={handleUnitChange}
+            />
           </div>
           <div className="col-md-4">
-            <Forecast city={weatherData.city} />
+            <Forecast city={weatherData.city} unit={unit} />
           </div>
         </div>
       </div>

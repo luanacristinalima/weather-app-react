@@ -16,7 +16,10 @@ export default function WeatherInfo(props) {
           <WeatherIcon code={props.data.icon} />
         </div>
         <div className="col-md-6 current-weather">
-          <WeatherTemperature celsius={Math.round(props.data.temperature)} />
+          <WeatherTemperature
+            celsius={Math.round(props.data.temperature)}
+            handleUnitChange={props.handleUnitChange}
+          />
           <h3 className="text-capitalize">{props.data.description}</h3>
         </div>
       </div>

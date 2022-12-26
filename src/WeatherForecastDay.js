@@ -1,16 +1,24 @@
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import WeatherIcon from "./WeatherIcon";
 
 export default function WeatherForecastDay(props) {
-  function maxTemperature() {
-    let temperature = Math.round(props.data.temperature.maximum);
-    return `${temperature}°`;
-  }
+  const [maxTemp, setMaxTemp] = useState(null);
+  const [minTemp, setMinTemp] = useState(null);
 
-  function minTemperature() {
-    let temperature = Math.round(props.data.temperature.minimum);
-    return `${temperature}°`;
-  }
+  useEffect(() => {
+    if (props.unit === "celsius") {
+      setMaxTemp(Math.round(props.data.temperature.maximum));
+      setMinTemp(Math.round(props.data.temperature.minimum));
+    } else {
+      setMaxTemp(Math.round((props.data.temperature.maximum * 9) / 5 + 32));
+      setMinTemp(Math.round((props.data.temperature.minimum * 9) / 5 + 32));
+    }
+  }, [
+    props.unit,
+    props.data.temperature.maximum,
+    props.data.temperature.minimum,
+  ]);
 
   function description() {
     let description = props.data.condition.description;
@@ -33,8 +41,7 @@ export default function WeatherForecastDay(props) {
           {description()}
         </li>
         <li>
-          {maxTemperature()}
-          <span className="min-temp">{minTemperature()}</span>
+          {maxTemp}º<span className="min-temp">{minTemp}º</span>
         </li>
       </ul>
     </div>

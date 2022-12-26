@@ -6,10 +6,12 @@ export default function WeatherTemperature(props) {
   function showFahrenheit(event) {
     event.preventDefault();
     setUnit("fahrenheit");
+    props.handleUnitChange("fahrenheit");
   }
   function showCelsius(event) {
     event.preventDefault();
     setUnit("celsius");
+    props.handleUnitChange("celsius");
   }
   function fahrenheit() {
     return (props.celsius * 9) / 5 + 32;
