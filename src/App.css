@@ -50,3 +50,10 @@ body.isBackgroundNight .btn {
   color: #efe3cb;
   opacity: 0.5;
 }
+
+@media (max-width: 992px) {
+  .App footer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}

@@ -51,7 +51,11 @@
 .Weather .current-weather {
   margin-top: 100px;
 }
-
+.Weather .current-weather-info {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .Weather .units {
   font-size: 18px;
   font-weight: 500;
@@ -66,4 +70,24 @@
 }
 .Weather .units a .active {
   color: #443057;
+}
+.loading {
+  height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .WeatherForecast {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Weather {
+    margin-top: 20px;
+    text-align: center;
+  }
+  .Weather .current-weather {
+    margin-bottom: 10px;
+    margin-top: 010px;
+  }
 }

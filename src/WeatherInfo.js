@@ -25,11 +25,11 @@ export default function WeatherInfo(props) {
       </div>
 
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-6">
           <WeatherDate date={props.data.date} />
         </div>
-        <div className="col-md-6 mt-4">
-          <ul>
+        <div className="col-6">
+          <ul className="current-weather-info">
             <li>Humidity: {props.data.humidity}%</li>
             <li>Wind: {props.data.wind}km/h</li>
           </ul>

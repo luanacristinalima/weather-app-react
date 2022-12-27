@@ -3,6 +3,7 @@ import axios from "axios";
 import "./weather.css";
 import WeatherInfo from "./WeatherInfo";
 import Forecast from "./Forecast";
+import ReactLoading from "react-loading";
 
 export default function Weather() {
   const [city, setCity] = useState("Lisbon");
@@ -57,10 +58,10 @@ export default function Weather() {
     return (
       <div className="Weather">
         <div className="row">
-          <div className="col-md-8 current-city-weather">
+          <div className="col-lg-8 current-city-weather">
             <form onSubmit={handleSubmit}>
               <div className="row">
-                <div className="col-10">
+                <div className="col-9 col-md-10">
                   <input
                     type="search"
                     placeholder="Enter a city..."
@@ -68,7 +69,7 @@ export default function Weather() {
                     onChange={updateCity}
                   />
                 </div>
-                <div className="col-2">
+                <div className="col-3 col-md-2">
                   <input
                     type="submit"
                     value="Search"
@@ -82,7 +83,7 @@ export default function Weather() {
               handleUnitChange={handleUnitChange}
             />
           </div>
-          <div className="col-md-4">
+          <div className="col-lg-4">
             <Forecast city={weatherData.city} unit={unit} />
           </div>
         </div>
@@ -90,6 +91,15 @@ export default function Weather() {
     );
   } else {
     search();
-    return "Loading...";
+    return (
+      <div className="d-flex justify-content-center align-content-center flex-wrap loading">
+        <ReactLoading
+          type={"spinningBubbles"}
+          color={"#9a585a"}
+          height={"20%"}
+          width={"20%"}
+        />
+      </div>
+    );
   }
 }
