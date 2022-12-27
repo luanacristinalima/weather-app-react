@@ -1,6 +1,37 @@
-body {
-  background: linear-gradient(-225deg, #cbbacc 0%, #2580b3 100%);
-  background-repeat: no-repeat;
+body.isBackgroundDay {
+  background: #9a585a;
+  color: #efe3cb;
+}
+body.isBackgroundDay .ForecastCard {
+  color: #9a585a;
+}
+body.isBackgroundDay .form-control {
+  border-radius: 20px;
+  background-color: #d8c0c1;
+}
+body.isBackgroundDay .btn {
+  border-radius: 20px;
+  background-color: #efe3cb;
+  border: 1px solid #efe3cb;
+  color: #9a585a;
+}
+
+body.isBackgroundNight {
+  background: #443057;
+  color: #efe3cb;
+}
+body.isBackgroundNight .ForecastCard {
+  color: #443057;
+}
+body.isBackgroundNight .form-control {
+  border-radius: 20px;
+  background-color: #d8c0c1;
+}
+body.isBackgroundNight .btn {
+  border-radius: 20px;
+  background-color: #efe3cb;
+  border: 1px solid #efe3cb;
+  color: #443057;
 }
 
 .App {
@@ -9,5 +40,13 @@ body {
 
 .App footer {
   text-align: center;
-  margin-bottom: 120px;
+  margin-top: 100px;
+}
+
+.App footer a {
+  color: #efe3cb;
+}
+.App footer a:hover {
+  color: #efe3cb;
+  opacity: 0.5;
 }

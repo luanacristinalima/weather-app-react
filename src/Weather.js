@@ -9,6 +9,15 @@ export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [unit, setUnit] = useState("celsius");
 
+  function handleHour(response) {
+    let icon = response.data.condition.icon;
+    if (icon.includes("day")) {
+      document.body.className = "isBackgroundDay";
+    } else {
+      document.body.className = "isBackgroundNight";
+    }
+  }
+
   function showWeather(response) {
     setWeatherData({
       ready: true,
@@ -34,7 +43,10 @@ export default function Weather() {
   function search() {
     const apiKey = "t62d70oe1100008354b8807464af7fad";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
-    axios.get(apiUrl).then(showWeather);
+    axios.get(apiUrl).then((response) => {
+      showWeather(response);
+      handleHour(response);
+    });
   }
 
   function handleUnitChange(unit) {

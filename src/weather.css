@@ -1,12 +1,5 @@
 .Weather {
-  color: #443057;
   margin: 80px 0 20px;
-}
-
-.Weather .current-city-weather {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 20px;
 }
 
 .Weather h1 {
@@ -67,8 +60,8 @@
   bottom: 25px;
 }
 .Weather .units a {
-  color: #443057;
-  opacity: 0.6;
+  color: white;
+  opacity: 0.4;
   text-decoration: none;
 }
 .Weather .units a .active {

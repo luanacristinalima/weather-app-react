@@ -31,7 +31,7 @@ export default function WeatherForecastDay(props) {
     <div className="row">
       <ul className="col-4">
         <li className="mb-3">{moment(date).format("MMM D")}</li>
-        <li>{moment(props.data.date).format("ddd")}</li>
+        <li>{moment(date).format("ddd")}</li>
       </ul>
       <div className="col-4">
         <WeatherIcon code={props.data.condition.icon} />
